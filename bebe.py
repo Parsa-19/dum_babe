@@ -1,5 +1,7 @@
 import os
 import time
+import string
+import random
 
 def display_timer(limit_sec: int):
     counter = 0
@@ -30,16 +32,33 @@ def aq():
         return
     print('that\'s the power of this program')
 
+def password_generator(pass_len):
+    rand_pass = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(pass_len))
+    print(rand_pass)
+    return rand_pass
+
 if __name__ == "__main__":
-    choise = input("Choose function to run (1: main, 2: aq, 3: timer): ")
+    choise = input("""
+Choose function to run 
+1: main, 
+2: number guess, 
+3: timer, 
+4: random_passowrd_generator
+
+enter the number:
+    """)
     funcs = {
         '1': main,
         '2': aq,
-        '3': display_timer
+        '3': display_timer,
+        '4': password_generator
     }   
     choosed_func = funcs[choise]
     if choise == '3':
         limit = int(input("how long it should be (second): "))
         choosed_func(limit)
+    elif choise == '4':
+        pass_len = int(input("how long should the password be: "))
+        choosed_func(pass_len)
     else:   
         choosed_func()
