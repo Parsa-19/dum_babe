@@ -31,7 +31,15 @@ def aq():
     print('that\'s the power of this program')
 
 if __name__ == "__main__":
-    # main()
-    # aq()
-    display_timer(int(input("how long it should be (second): ")))
-   
+    choise = input("Choose function to run (1: main, 2: aq, 3: timer): ")
+    funcs = {
+        '1': main,
+        '2': aq,
+        '3': display_timer
+    }   
+    choosed_func = funcs[choise]
+    if choise == '3':
+        limit = int(input("how long it should be (second): "))
+        choosed_func(limit)
+    else:   
+        choosed_func()
