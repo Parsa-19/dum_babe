@@ -1,3 +1,17 @@
+import os
+import time
+
+def display_timer(limit_sec: int):
+    counter = 0
+    try:
+        while counter < limit_sec:
+            os.system('clear')
+            counter += 1
+            print(counter)
+            time.sleep(1)
+    except KeyboardInterrupt:
+        print('\ntimer STOPED!')
+
 def main():
     for i in range(5):
         print('@@@@@')
@@ -5,7 +19,6 @@ def main():
     print('5x5')
 
 def aq():
-    import time
     print("I can guess the number you choose!(press any key to continue...)")
     dum = input() 
     guess = int(input("your guess:"))
@@ -19,5 +32,6 @@ def aq():
 
 if __name__ == "__main__":
     # main()
-    aq()
+    # aq()
+    display_timer(int(input("how long it should be (second): ")))
    
