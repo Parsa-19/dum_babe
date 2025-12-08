@@ -37,6 +37,44 @@ def password_generator(pass_len):
     print(rand_pass)
     return rand_pass
 
+def calculator():
+    print('\n( Welcome To Calculator )')
+    print('you can continue with these prompts as long as you type \"finish\" to get out.')
+    print()
+
+    num_pair = []
+    num_pair.append(int(input("enter the number? ")))
+
+    while True:
+        operator = input("enter the operator [+, -, *, /]? ")
+        if operator.lower() == 'finish':
+            break
+        if operator not in ['+', '-', '*', '/', 'finish']:
+            print(f"invalid operator {operator} try again!")
+            continue
+        
+        sec_num = input("enter the number? ")
+        if sec_num.lower() == 'finish':
+            break
+
+        num_pair.append(int(sec_num))
+        current_result = 0
+        match operator:
+            case '+':
+                current_result = num_pair[0] + num_pair[1]
+            case '-':
+                current_result = num_pair[0] - num_pair[1]
+            case '*':
+                current_result = num_pair[0] * num_pair[1]
+            case '/':
+                current_result = num_pair[0] / num_pair[1]
+        
+        num_pair = [current_result]
+        print(f"current result = {current_result}")
+    
+    print("\nprogram stoped!")
+
+
 if __name__ == "__main__":
     choise = input("""
 Choose function to run 
@@ -44,14 +82,15 @@ Choose function to run
 2: number guess, 
 3: timer, 
 4: random_passowrd_generator
+5: calculator
 
-enter the number:
-    """)
+enter the number: """)
     funcs = {
         '1': main,
         '2': aq,
         '3': display_timer,
-        '4': password_generator
+        '4': password_generator,
+        '5': calculator
     }   
     choosed_func = funcs[choise]
     if choise == '3':
