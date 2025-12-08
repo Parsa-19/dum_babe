@@ -2,12 +2,18 @@ import os
 import time
 import string
 import random
+import json
+
+with open('os.config.json', 'r') as f:  
+    clear_command = json.load(f)['clear_command']
+
 
 def display_timer(limit_sec: int):
+    global clear_command
     counter = 0
     try:
         while counter < limit_sec:
-            os.system('clear')
+            os.system(clear_command)
             counter += 1
             print(counter)
             time.sleep(1)
@@ -44,11 +50,12 @@ def bouncing_ball():
     x,y=0,0
     g,h=17,7
     j,k=1,1
+    global clear_command
     count_sec = 0
     while count_sec < 10:
         if 0>x or x>g:j*=-1;x+=j
         if 0>y or y>h:k*=-1;y+=k
-        os.system('cls');print( s+w*y+d+c*x+e+c*(g-x)+d+n+w*(h-y)+s );x+=j;y+=k;time.sleep(0.1)
+        os.system(clear_command);print( s+w*y+d+c*x+e+c*(g-x)+d+n+w*(h-y)+s );x+=j;y+=k;time.sleep(0.1)
         count_sec += 0.1
 
 def calculator():
