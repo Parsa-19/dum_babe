@@ -7,8 +7,8 @@ import json
 with open('os.config.json', 'r') as f:  
     clear_command = json.load(f)['clear_command']
 
-
-def display_timer(limit_sec: int):
+def display_timer():
+    limit_sec = int(input("how long it should be (second): "))
     global clear_command
     counter = 0
     try:
@@ -23,7 +23,6 @@ def display_timer(limit_sec: int):
 def main():
     for i in range(5):
         print('@@@@@')
-
     print('5x5')
 
 def aq():
@@ -38,7 +37,8 @@ def aq():
         return
     print('that\'s the power of this program')
 
-def password_generator(pass_len):
+def password_generator():
+    pass_len = int(input("how long should the password be: "))
     rand_pass = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(pass_len))
     print(rand_pass)
     return rand_pass
@@ -115,12 +115,4 @@ enter the number: """)
         '5': calculator,
         '6': bouncing_ball
     }   
-    choosed_func = funcs[choise]
-    if choise == '3':
-        limit = int(input("how long it should be (second): "))
-        choosed_func(limit)
-    elif choise == '4':
-        pass_len = int(input("how long should the password be: "))
-        choosed_func(pass_len)
-    else:   
-        choosed_func()
+    funcs[choise]()
