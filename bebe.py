@@ -52,12 +52,17 @@ def bouncing_ball():
     j,k=1,1
     global clear_command
     count_sec = 0
-    while count_sec < 10:
-        if 0>x or x>g:j*=-1;x+=j
-        if 0>y or y>h:k*=-1;y+=k
-        os.system(clear_command);print( s+w*y+d+c*x+e+c*(g-x)+d+n+w*(h-y)+s );x+=j;y+=k;time.sleep(0.1)
-        count_sec += 0.1
-
+    print('Bouncing Ball! for 10 seconds')
+    time.sleep(1.5)
+    try:
+        while count_sec < 10:
+            if 0>x or x>g:j*=-1;x+=j
+            if 0>y or y>h:k*=-1;y+=k
+            os.system(clear_command);print( s+w*y+d+c*x+e+c*(g-x)+d+n+w*(h-y)+s );x+=j;y+=k;time.sleep(0.1)
+            count_sec += 0.1
+    except KeyboardInterrupt:
+        print('\nbouncing ball STOPED!')
+        
 def calculator():
     print('\n( Welcome To Calculator )')
     print('you can continue with these prompts as long as you type \"finish\" to get out.')
